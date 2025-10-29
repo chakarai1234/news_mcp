@@ -1,0 +1,23 @@
+[project]
+name = "news-mcp"
+version = "0.1.0"
+description = "One stop singapore news paper feeds"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bs4>=0.0.2",
+    "dateparser>=1.2.2",
+    "httpx>=0.28.1",
+    "mcp-proxy>=0.8.2",
+    "mcp[cli]>=1.19.0",
+    "python-dotenv>=1.1.1",
+]
+
+[project.scripts]
+news_mcp = "news_mcp.server:main"
+straits = "news_mcp.news_retriever.straits_times:main"
+business = "news_mcp.news_retriever.business_times:main"
+cna = "news_mcp.news_retriever.cna:main"
+
+[tool.uv]
+package = true

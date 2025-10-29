@@ -1,0 +1,9 @@
+services:
+  news_mcp:
+    container_name: news_mcp
+    image: news_mcp:latest
+    build: .
+    env_file: .env
+    ports:
+      - '${MCP_PORT:-8000}:${MCP_PORT:-8000}'
+
