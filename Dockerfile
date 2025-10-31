@@ -1,10 +1,8 @@
-FROM debian:12-slim
+FROM alpine:latest
 
-RUN apt-get update && \
-    apt-get install -y curl && \
+RUN apk add --no-cache curl && \
     curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/cache/apk/*
 
 ENV PATH="/root/.local/bin:$PATH"
 
@@ -12,7 +10,7 @@ WORKDIR /app
 
 COPY pyproject.toml uv.lock* .python-version ./
 
-RUN uv sync
+RUN uv sync --no-cache --no-dev
 
 COPY . .
 
