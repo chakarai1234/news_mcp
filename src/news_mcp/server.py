@@ -18,6 +18,12 @@ mcp.add_tool(cna, title="Channel News Asia (CNA)")
 mcp.add_tool(business_times, title="Business Times SG")
 
 
+@mcp.resource("greeting://{name}")
+def get_greeting(name: str) -> str:
+    """Get a personalized greeting"""
+    return f"Hello, {name}!"
+
+
 def main() -> None:
     mcp.run(transport="sse")
 
