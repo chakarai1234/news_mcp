@@ -47,6 +47,17 @@ uv run cna         # Channel News Asia
 docker compose up --build
 ```
 
+or
+
+```bash
+# You can run using the run.sh file
+# This command is only for MacOS or Linux
+# For MacOs required Docker Desktop
+
+# Give permissions for run.sh in unix
+chmod +x ./run.sh # (sudo chmod) if super user required
+```
+
 ## Configuration
 
 1. Create a `.env` file with required environment variables:
@@ -60,9 +71,16 @@ MCP_PORT=8000
 ```json
 {
 	"mcpServers": {
-		"news_sse": {
-			"command": "uv",
-			"args": ["tool", "run", "mcp-proxy", "http://127.0.0.1:8000/sse"]
+		"news_streamable": {
+			"command": "/opt/homebrew/bin/uv",
+			"args": [
+				"tool",
+				"run",
+				"mcp-proxy",
+				"--transport",
+				"streamablehttp",
+				"http://127.0.0.1:8080/mcp"
+			]
 		}
 	}
 }
@@ -79,3 +97,4 @@ MCP_PORT=8000
 ## License
 
 MIT
+
