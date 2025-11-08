@@ -56,6 +56,8 @@ or
 
 # Give permissions for run.sh in unix
 chmod +x ./run.sh # (sudo chmod) if super user required
+
+./run.sh #For MacOS it will spin up the docker desktop builds and run the docker container in the background
 ```
 
 ## Configuration
