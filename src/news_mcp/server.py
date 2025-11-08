@@ -10,7 +10,7 @@ PORT = os.environ["MCP_PORT"]
 LOG_LEVEL = os.getenv("LOG_LEVEL") or "INFO"
 
 
-mcp = FastMCP(host=HOST, port=int(PORT), log_level=LOG_LEVEL)
+mcp = FastMCP(name="news_mcp", host=HOST, port=int(PORT), log_level=LOG_LEVEL)
 
 
 mcp.add_tool(straits_times, title="Straits Times (ST)")
@@ -25,7 +25,7 @@ def get_greeting(name: str) -> str:
 
 
 def main() -> None:
-    mcp.run(transport="sse")
+    mcp.run(transport="streamable-http")
 
 
 if __name__ == "__main__":

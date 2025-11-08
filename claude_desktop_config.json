@@ -1,8 +1,16 @@
 {
 	"mcpServers": {
-		"news_sse": {
-			"command": "uv",
-			"args": ["tool", "run", "mcp-proxy", "http://127.0.0.1:8000/sse"]
+		"news_streamable": {
+			"command": "/opt/homebrew/bin/uv",
+			"args": [
+				"tool",
+				"run",
+				"mcp-proxy",
+				"--transport",
+				"streamablehttp",
+				"http://0.0.0.0:8080/mcp"
+			]
 		}
 	}
 }
+
