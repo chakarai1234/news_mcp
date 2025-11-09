@@ -14,14 +14,14 @@ TIMEOUT = int(os.getenv("TIMEOUT"))
 straits_times_news = StraitsTimesNews(url=URL, timeout=TIMEOUT)
 
 
-def straits_times(top: int = 5):
-    response = straits_times_news.fetch_article(top=top)
+def straits_times(recent: int = 5):
+    response = straits_times_news.fetch_article(recent=recent)
     if response:
         return response
 
 
 def main() -> None:
-    straits_times_news = straits_times(top=5)
+    straits_times_news = straits_times(recent=5)
     if straits_times_news:
         print(straits_times_news[0])
 

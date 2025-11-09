@@ -19,7 +19,7 @@ class NewsArticles:
         self.heading_tag = None
         self.content_tag = None
 
-    def fetch_article(self, top: int = 5) -> list[ResponseModel]:
+    def fetch_article(self, recent: int = 5) -> list[ResponseModel]:
         if self.heading_tag is None and self.content_tag is None:
             raise ValueError("Set the self.heading_tag and self.content_tag to fetch thee data from the web")
         response_model: list[ResponseModel] = []
@@ -31,7 +31,7 @@ class NewsArticles:
             if root.tag.endswith("rss"):
                 channel = root.find("channel")
                 for it in channel.findall("item"):
-                    if len(response_model) == top:
+                    if len(response_model) == recent:
                         break
                     else:
                         resp_html = httpx.get(it.findtext(request_tags.link), timeout=self.timeout, follow_redirects=True)

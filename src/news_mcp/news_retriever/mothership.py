@@ -14,9 +14,9 @@ TIMEOUT = int(os.getenv("TIMEOUT"))
 mothership_news = MothershipNews(url=URL, timeout=TIMEOUT)
 
 
-def mothership(top: int = 5):
+def mothership(recent: int = 5):
     raise NotImplementedError()
-    # response = mothership_news.fetch_article(top=top)
+    # response = mothership_news.fetch_article(recent=recent)
     # if response:
     #     return response
 

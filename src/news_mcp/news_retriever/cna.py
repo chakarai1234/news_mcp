@@ -14,14 +14,14 @@ TIMEOUT = int(os.getenv("TIMEOUT"))
 cna_times_news = CNANews(url=URL, timeout=TIMEOUT)
 
 
-def cna(top: int = 5):
-    response = cna_times_news.fetch_article(top=top)
+def cna(recent: int = 5):
+    response = cna_times_news.fetch_article(recent=recent)
     if response:
         return response
 
 
 def main() -> None:
-    cna_times_news = cna(top=5)
+    cna_times_news = cna(recent=5)
     if cna_times_news:
         print(cna_times_news[0])
 
