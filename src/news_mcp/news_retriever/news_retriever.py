@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import httpx
 from news_mcp.models import RequestTags
-
 from news_mcp.models import ResponseModel
 
 
@@ -14,17 +13,17 @@ request_tags = RequestTags()
 
 class NewsArticles:
     def __init__(self, url: str, timeout: int):
-        self.url = url
-        self.timeout = timeout
-        self.heading_tag = None
-        self.content_tag = None
+        self.url: str = url
+        self.timeout: int = timeout
+        self.heading_tag: str | None = None
+        self.content_tag: str | None = None
 
     def fetch_article(self, recent: int = 5) -> list[ResponseModel]:
         if self.heading_tag is None and self.content_tag is None:
             raise ValueError("Set the self.heading_tag and self.content_tag to fetch thee data from the web")
         response_model: list[ResponseModel] = []
         try:
-            resp = httpx.get(self.url, timeout=self.timeout, follow_redirects=True)
+            resp: httpx.Response = httpx.get(self.url, timeout=self.timeout, follow_redirects=True)
             resp.raise_for_status()
             content = resp.content
             root = ET.fromstring(content)
