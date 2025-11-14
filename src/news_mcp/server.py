@@ -5,12 +5,12 @@ from news_mcp.news_retriever import cna, straits_times, business_times
 
 load_dotenv()
 
-HOST = os.environ["MCP_HOST"]
-PORT = os.environ["MCP_PORT"]
-LOG_LEVEL = os.getenv("LOG_LEVEL") or "INFO"
+HOST: str = os.environ["MCP_HOST"]
+PORT: str = os.environ["MCP_PORT"]
+LOG_LEVEL: str = os.getenv("LOG_LEVEL") or "INFO"
 
 
-mcp = FastMCP(name="news_mcp", host=HOST, port=int(PORT), log_level=LOG_LEVEL)
+mcp: FastMCP = FastMCP(name="news_mcp", host=HOST, port=int(PORT), log_level=LOG_LEVEL)
 
 
 mcp.add_tool(straits_times, title="Straits Times (ST)")
